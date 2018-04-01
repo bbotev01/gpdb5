@@ -1,0 +1,19 @@
+version: '2'
+services:
+  master:
+    image: gpdb5_centos7
+    ports:
+    - 5432:5432
+    links: 
+    - segment
+    volumes:
+    - pgdata:/gpdata 
+
+  segment:
+    image: gpdb5_centos7
+    entrypoint: gpdb-seg-entrypoint.sh 
+    volumes:
+    - pgdata:/gpdata
+
+volumes: 
+  pgdata:
