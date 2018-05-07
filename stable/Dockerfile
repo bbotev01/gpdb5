@@ -30,7 +30,7 @@ RUN	yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.n
 
         #install orca      
 RUN     cd /usr/src/gporca && mkdir build && cd build && \
-	git checkout v2.55.13 && \
+	git checkout v2.56.2 && \
 	source /opt/rh/devtoolset-6/enable && \	
         cmake3 ../ && \
         make -j8 && \
@@ -39,7 +39,7 @@ RUN     cd /usr/src/gporca && mkdir build && cd build && \
         #install gpdb 
 RUN     cd /usr/src/gpdb && mkdir -p /usr/local/gpdb && \
 	git submodule init && git submodule update && \
-	git checkout 5.6.0 && \
+	git checkout 5.8.0 && \
 	source /opt/rh/devtoolset-6/enable && \ 	
         ./configure --with-libxml --enable-orca --prefix=/usr/local/gpdb && \
 #        ./configure --with-perl --with-python --with-libxml --enable-mapreduce --enable-orca --prefix=/usr/local/gpdb && \
